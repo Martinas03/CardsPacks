@@ -1,4 +1,4 @@
-import React, {useCallback, useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import {
     setPageCountNumber,
     setPageNumber
@@ -8,7 +8,6 @@ import {AppRootStateType} from "../../state/store";
 import s from "./Pagination.module.css"
 import {Selector} from "../selector/Selector";
 import {options} from "../../helpers/helpers";
-import debounce from 'lodash.debounce'
 import {setLoading} from "../../state/packs-reducer";
 
 
@@ -26,10 +25,6 @@ export const Pagination = () => {
     let diapason = 5
 
     const countOfListsPages = Math.ceil(totalPage / diapason)
-
-    // useEffect(()=> {
-    //     dispatch(setLoading(true))
-    // }, [pageCount, page])
 
     const firstPage = () => {
         dispatch(setLoading(true))
@@ -62,7 +57,9 @@ export const Pagination = () => {
                     setIndex(index - diapason)
                 }} disabled={index === 1}>{'<<'}</button>
                 {index > 1 && <>
-                    <button disabled={loading} className={page === 1 ? s.navButton_focus : s.navButton} onClick={firstPage}>1</button>
+                    <button disabled={loading} className={page === 1 ? s.navButton_focus : s.navButton}
+                            onClick={firstPage}>1
+                    </button>
                     <span>...</span>
                 </>}
                 {pagesArray.map((pg, i) => {
@@ -76,7 +73,8 @@ export const Pagination = () => {
                 })}
                 {index + diapason < totalPage && <>
                     <span>...</span>
-                    <button disabled={loading} className={page === totalPage ? s.navButton_focus : s.navButton} onClick={lastPage}>{totalPage}</button>
+                    <button disabled={loading} className={page === totalPage ? s.navButton_focus : s.navButton}
+                            onClick={lastPage}>{totalPage}</button>
                 </>}
                 <button className={s.button} onClick={() => {
                     setIndex(index + diapason)

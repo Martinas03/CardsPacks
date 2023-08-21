@@ -89,7 +89,7 @@ export const packsReducer = (state: InitStateType = initialState, action: Action
         case ADD_NEW_CARD_PACK: {
             return {
                 ...state,
-                cardsPacks: [action.newPack,...state.cardsPacks]
+                cardsPacks: [action.newPack, ...state.cardsPacks]
             }
         }
         case CHANGE_CARD_PACK_TITLE: {
