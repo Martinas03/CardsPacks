@@ -1,9 +1,28 @@
+.navWrapper {
+    display: flex;
+    justify-content: space-around;
+    border-radius: 5px;
+    /*border: #0f09cb 2px solid;*/
+    position: static;
+}
+
 .nav_ex2 {
     margin-top: 1rem;
     display: flex;
 }
 
 .navButton {
+    width: 24px;
+    height: 24px;
+    margin: 5px;
+    /*border: none;*/
+    background: none;
+    border-radius: 3px;
+    border: 1px solid #246fa0;
+
+}
+
+.button {
     width: 24px;
     height: 24px;
     margin: 5px;
@@ -16,7 +35,7 @@
     width: 24px;
     height: 24px;
     margin: 5px;
-    border: none;
+    border: 1px solid #246fa0;
     border-radius: 3px;
     background-color: #21268F;
     color: white;

@@ -1,9 +1,105 @@
-.header {
+:root {
+    --white: #ffffff;
+    --darkblue: #246fa0;
+    --lightblue: rgb(213, 213, 213);
+}
+
+* {
+    padding: 0;
+    margin: 0;
+}
+
+.mainContainer {
+    width: 70%;
+    min-height: 700px;
+    background-color: #a6baea;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.container {
+    min-width: 100%;
+    /*margin: 0 15px;*/
+    /*margin: 0 auto;*/
+    /*background-color: #a9477b;*/
+    min-height: 700px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    /*background-color: #6f6f6f;*/
+}
+
+.starWrapper {
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: center;
     align-items: center;
+}
+
+.tableWrapper {
+    min-width: 100%;
+    /*display: grid;*/
+    /*grid-template-columns: 2fr 1fr 1.5fr 1fr 2fr;*/
+    overflow-x: auto;
+    /*border-radius: 5px;*/
+    /*border: #0f09cb 2px solid;*/
+}
+
+.table {
+    background-color: #ffffff;
+    min-width: 100%;
     margin: 10px;
+    padding: 20px;
+    border-radius: 5px;
+    border: #0f09cb 2px solid;
+}
+
+.tableWrapper .table {
+    margin: 30px 0 20px;
+    border-collapse: collapse;
+    text-align: center;
+}
+
+.tableWrapper .table .th,
+.tableWrapper .table .td {
+    padding: 8px 20px;
+    min-width: 90px;
+}
+
+.tableWrapper .table .th {
+    color: var(--white);
+    background: var(--darkblue);
+}
+
+.tableWrapper .table .tbody .tr:nth-of-type(even) > * {
+    background: var(--lightblue);
+}
+
+.tableWrapper .table .td:first-child {
+    /*display: grid;*/
+    /*grid-template-columns: 25px 1fr;*/
+    /*grid-gap: 10px;*/
+    text-align: left;
+}
+
+/*.header {*/
+/*    display: flex;*/
+/*    flex-direction: row;*/
+/*    justify-content: space-around;*/
+/*    align-items: center;*/
+/*    margin: 10px;*/
+/*}*/
+
+.back {
+    float: left;
+    width: 50px;
+    height: 50px;
+    color: #246fa0;
+    cursor: pointer
 }
 
 .inputSearch {
@@ -15,19 +111,24 @@
     line-height: 30px;
     padding: 8px 15px;
     border-bottom: 1px solid #eee;
-    width: 500px;
+    width: 400px;
     font-size: 12px;
+    margin: 15px auto;
+}
+
+.loading {
+    color: #3774ff;
 }
 
 .button {
-    background-color: rgba(0,0,0,0.4);
-    color: rgba(256,256,256,0.7);
-    border:0;
+    background-color: rgba(0, 0, 0, 0.4);
+    color: rgba(256, 256, 256, 0.7);
+    border: 0;
     border-radius: 15px;
     display: block;
     margin: 15px auto;
     padding: 15px 45px;
-    width: 100%;
+    /*width: 100%;*/
     font-size: 13px;
     font-weight: bold;
     cursor: pointer;
@@ -36,59 +137,29 @@
     -webkit-transition: all .3s ease;
 }
 
+.sortButton {
+    background-color: #246fa0;
+    border: none;
+    margin-left: 3px;
+    cursor: pointer;
+}
+
+.arrow {
+    color: white;
+}
+
 .content {
     /*width: 30%;*/
     display: flex;
     flex-direction: row;
+    min-width: 100vh;
 }
 
-.wrapper {
-    /*float: right;*/
-    width: 70%;
-    display: grid;
-    grid-template-columns: 2fr 1fr 1.5fr 1fr 2fr;
-}
-
-.head, .body, .tr {
-    display: contents;
-}
-
-.th, .td  {
-    padding: 15px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    /*text-align: left;*/
-    display: flex;
-    align-items: center;
-}
-
-.th {
-    position: sticky;
-    top: 0;
-    background: #6c7ae0;
-    font-weight: normal;
-    font-size: 1.1rem;
-    color: white;
-}
-
-.th:last-child {
-    border: 0;
-}
-
-.td {
-    padding-top: 10px;
-    padding-bottom: 10px;
-    color: #808080;
-}
-
-.td {
-    background: #f8f6ff;
-}
-
-.tr:nth-child(even) .td {
-
-    background-color: #d0d0d0;
+.buttonIcon {
+    width: 25px;
+    height: 25px;
+    margin: 0 3px ;
+    cursor: pointer;
 }
 
 .deleteButton,
@@ -108,4 +179,18 @@
 .learnButton {
     background-color: #8cb6f6;
     color: #0f09cb;
+}
+
+.searchAndAdd {
+    min-width: 100vh;
+    margin: 20px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border: #0f09cb 2px solid;
+    border-radius: 5px;
+}
+
+.searchWrapper {
+    display: flex;
 }

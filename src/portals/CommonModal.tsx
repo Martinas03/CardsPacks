@@ -13,7 +13,10 @@ type ModalPropsType = {
     title: string
     isDeleteModal: string
     onChange?: (e: ChangeEvent<HTMLInputElement>) => void
+    onChange2?: (e: ChangeEvent<HTMLInputElement>) => void
     inputValue?: string
+    inputValue2?: string
+    isCardModal?: boolean | string
 };
 
 const CommonModal: React.FC<ModalPropsType> = ({
@@ -23,11 +26,14 @@ const CommonModal: React.FC<ModalPropsType> = ({
                                                    onAction,
                                                    title,
                                                    onChange,
+                                                   onChange2,
                                                    inputValue,
-                                                   isDeleteModal
+                                                   inputValue2,
+                                                   isDeleteModal,
+                                                   isCardModal
                                                }) => {
-    const [packName, setPackName] = useState('')
     let portal = document.getElementById('portal')
+    const [packName, setPackName] = useState('')
     const dispatch = useDispatch<any>();
 
 
@@ -46,14 +52,26 @@ const CommonModal: React.FC<ModalPropsType> = ({
                         <div>Do you really want to remove <strong>Pack-Name&</strong></div>
                         <div>All cards will excluded from this course</div>
                     </div>
-                    : <div>
-                        <label htmlFor="pack-name">Name Pack</label>
-                        <input type="text" id={'pack-name'} value={inputValue} onChange={onChange}/>
-                    </div>
+                    : isCardModal ? <div>
+                            <div>
+                                <label htmlFor="question">question</label>
+                                <input type="text" id={'question'} value={inputValue} onChange={onChange}/>
+                            </div>
+
+                            <div>
+                                <label htmlFor="answer">answer</label>
+                                <input type="text" id={'answer'} value={inputValue2} onChange={onChange2}/>
+                            </div>
+                        </div> :
+                        <div>
+                            <label htmlFor="pack-name">Name Pack</label>
+                            <input type="text" id={'pack-name'} value={inputValue} onChange={onChange}/>
+                        </div>
                 }
                 <div className={s.buttonWrapper}>
                     <button className={s.cancelButton} onClick={onClose}>Cancel</button>
-                    <button onClick={onAction} className={isDeleteModal ? s.deleteButton : s.saveButton}>{buttonTitle}</button>
+                    <button onClick={onAction}
+                            className={isDeleteModal ? s.deleteButton : s.saveButton}>{buttonTitle}</button>
                 </div>
             </div>
         </div>, portal

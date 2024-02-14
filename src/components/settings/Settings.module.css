@@ -1,6 +1,9 @@
 .container {
     width: 20%;
-    margin: 10px;
+    padding: 30px 20px;
+    min-height: 600px;
+    border: #0f09cb 2px solid;
+    border-radius: 5px;
 }
 
 .button {
@@ -12,4 +15,11 @@
     width: 96px;
     height: 36px;
     background-color: #6f6f6f;
+}
+
+.buttonsWrapper {
+    margin:20px 0 30px;
+}
+.slider {
+    margin:20px 0 30px;
 }

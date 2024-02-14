@@ -1,5 +1,14 @@
-
 .wrapper {
+    background-color: #5a87b4;
+    height: 400px;
+    padding:0 25px;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.tableWrapper {
     position:absolute;
     height: 550px;
     width: 350px;
@@ -29,7 +38,8 @@
     flex-direction: column;
     justify-content: start;
     align-items: center;
-    height: 100vh;
+    height: 100%;
+    color: white;
 }
 
 .formHolder {
@@ -74,7 +84,7 @@
     display: block;
     margin: 15px auto;
     padding: 15px 45px;
-    width: 100%;
+    /*width: 100%;*/
     font-size: 13px;
     font-weight: bold;
     cursor: pointer;
@@ -84,6 +94,6 @@
 }
 
 .createAccount {
-    color: #3b3b3b;
     text-decoration: none;
+    color: white;
 }

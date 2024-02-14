@@ -13,8 +13,8 @@ export type UserType = {
     verified: boolean; // подтвердил ли почту
     rememberMe: boolean;
 }
-export type InitialStateType = {
 
+export type InitialStateType = {
     user: UserType,
     isAuth: boolean
     isRegister: boolean
@@ -23,7 +23,7 @@ let initialState: InitialStateType = {
     user: {} as UserType,
     isAuth: false,
     isRegister: false
-}
+};
 type ActionType = SetIsAuthUserType | SetUserDataActionType | SetRegisterDataActionType
 
 export type SetUserDataActionType = {
@@ -43,9 +43,9 @@ export type SetIsAuthUserType = {
 
 }
 
-const SET_USER_DATA = 'login/SET_USER_DATA'
-const SET_IS_AUTH = 'login/SET_IS_AUTH'
-const SET_REGISTER_DATA = 'register/SET_REGISTER_DATA'
+const SET_USER_DATA = 'login/SET_USER_DATA';
+const SET_IS_AUTH = 'login/SET_IS_AUTH';
+const SET_REGISTER_DATA = 'register/SET_REGISTER_DATA';
 
 export const authReducer = (state: InitialStateType = initialState, action: ActionType): InitialStateType => {
     switch (action.type) {
@@ -70,20 +70,20 @@ export const authReducer = (state: InitialStateType = initialState, action: Acti
         default:
             return state
     }
-}
+};
 
 
 export const setUserData = (user: UserType): SetUserDataActionType => ({
     type: SET_USER_DATA, user
-})
+});
 
 export const setRegisterData = (isRegister: boolean): SetRegisterDataActionType => ({
     type: SET_REGISTER_DATA, isRegister
-})
+});
 
 export const setIsAuth = (value: boolean): SetIsAuthUserType => ({
     type: SET_IS_AUTH, value
-})
+});
 
 
 
@@ -94,55 +94,59 @@ export const loginTC = (email: string, password: string, rememberMe: boolean) =>
         try {
             authApi.getLogin(email, password, rememberMe)
                 .then((data) => {
-                    dispatch(setUserData(data))
-                    dispatch(setIsAuth(true))
+                    dispatch(setUserData(data));
+                    console.log(data)
+                    dispatch(setIsAuth(true));
                     localStorage.setItem('token', data.token)
+                    localStorage.setItem('userId', data._id);
                 })
         } catch (e) {
             console.log(e);
         }
     }
-}
+};
 
 export const RegisterTC = (email: string, password: string) => {
     return async (dispatch: Dispatch) => {
         try {
-            await authApi.getRegister(email, password)
+            await authApi.getRegister(email, password);
             dispatch(setRegisterData(true))
         } catch (e) {
             console.log('error from register', e);
         }
     }
-}
+};
 
 export const authMeTC = (navigate: any) => async (dispatch: Dispatch) => {
     try {
-        const token = localStorage.getItem("token")
+        const token = localStorage.getItem("token");
         if (token) {
-            const response = await authApi.authMe(token)
-            localStorage.setItem("token", response.token)
-            dispatch(setUserData(response))
+            const response = await authApi.authMe(token);
+            localStorage.setItem("token", response.token);
+            dispatch(setUserData(response));
             dispatch(setIsAuth( true))
+        } else {
+            navigate('/login')
         }
     } catch (e) {
-        navigate('/login')
+        navigate('/login');
         console.log('error from register', e);
     }
-}
+};
 
 export const logoutTC = (navigate: any) => async (dispatch: Dispatch) => {
     try {
-        const token = localStorage.getItem("token")
+        const token = localStorage.getItem("token");
         if (token) {
-            const response = await authApi.logout(token)
-            localStorage.removeItem("token")
-            dispatch(setUserData(response))
-            dispatch(setIsAuth( false))
+            const response = await authApi.logout(token);
+            localStorage.removeItem("token");
+            dispatch(setUserData(response));
+            dispatch(setIsAuth( false));
             navigate('/login')
         }
     } catch (e) {
         console.log(e);
     }
-}
+};
 
 
