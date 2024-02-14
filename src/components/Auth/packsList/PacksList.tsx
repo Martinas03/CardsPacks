@@ -11,12 +11,13 @@ import {ClockLoader} from "react-spinners";
 import debounce from 'lodash.debounce'
 import {Pagination} from '../../pagination/Pagination'
 import {BiSolidDownArrow, BiSolidUpArrow} from "react-icons/bi";
-import {getCardsTC, setPackId, setTitle} from "../../../state/cards-reducer";
+// import {getCardsTC, setPackId, setTitle} from "../../../state/cards-reducer";
 import {useNavigate} from "react-router-dom";
 import del from './../../../assets/icons/delete.png';
 import editEl from './../../../assets/icons/edit.png';
 import learn from './../../../assets/icons/learn.png';
 import {log} from "util";
+import {getCardsTC, setTitle} from "../../../state/cards-reducer";
 
 type PacksListType = {
     packs: CardsPacksType[],
