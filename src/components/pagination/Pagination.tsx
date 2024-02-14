@@ -19,9 +19,6 @@ type PaginationPropsType = {
 
 
 export const Pagination = (props: PaginationPropsType) => {
-    // const page = useSelector<AppRootStateType, number>((state) => state.packSearchReducer.page);
-    // const pageCount = useSelector<AppRootStateType, any>((state) => state.packSearchReducer.pageCount);
-    // const cardPacksTotalCount = useSelector<AppRootStateType, number>((state) => state.packsReducer.cardPacksTotalCount);
     const loading = useSelector<AppRootStateType, boolean>((state) => state.packsReducer.loading);
     const dispatch = useDispatch<any>();
 
@@ -42,7 +39,6 @@ export const Pagination = (props: PaginationPropsType) => {
     const firstPage = () => {
         props.isCard ? dispatch(setCardsPageNumber(1)) : dispatch(setPageNumber(1));
         setIndex(1)
-
     };
 
     const lastPage = () => {
